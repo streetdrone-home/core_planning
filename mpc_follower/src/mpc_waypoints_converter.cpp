@@ -17,14 +17,14 @@
 #include <iostream>
 #include <ros/ros.h>
 #include <std_msgs/Int32.h>
-#include <autoware_msgs/Lane.h>
+#include <aslan_msgs/Lane.h>
 
 class MPCWaypointsConverter
 {
 public:
   MPCWaypointsConverter()
   {
-    pub_waypoints_ = nh_.advertise<autoware_msgs::Lane>("/mpc_waypoints", 1);
+    pub_waypoints_ = nh_.advertise<aslan_msgs::Lane>("/mpc_waypoints", 1);
     sub_closest_waypoint_ = nh_.subscribe("/closest_waypoint", 1, &MPCWaypointsConverter::callbackClosestWaypoints, this);
     sub_base_waypoints_ = nh_.subscribe("/base_waypoints", 1, &MPCWaypointsConverter::callbackBaseWaypoints, this);
     sub_final_waypoints_ = nh_.subscribe("/final_waypoints", 1, &MPCWaypointsConverter::callbackFinalWaypoints, this);
@@ -40,7 +40,7 @@ private:
   ros::Publisher pub_waypoints_;
   ros::Subscriber sub_closest_waypoint_, sub_base_waypoints_, sub_final_waypoints_, sub_current_velocity_;
 
-  autoware_msgs::Lane base_waypoints_;
+  aslan_msgs::Lane base_waypoints_;
   int closest_idx_;
   int back_waypoints_num_;
   int front_waypoints_num_;
@@ -50,12 +50,12 @@ private:
     closest_idx_ = msg.data;
   }
 
-  void callbackBaseWaypoints(const autoware_msgs::Lane &msg)
+  void callbackBaseWaypoints(const aslan_msgs::Lane &msg)
   {
     base_waypoints_ = msg;
   }
 
-  void callbackFinalWaypoints(const autoware_msgs::Lane &final_waypoints)
+  void callbackFinalWaypoints(const aslan_msgs::Lane &final_waypoints)
   {
     if (base_waypoints_.waypoints.size() == 0 || final_waypoints.waypoints.size() == 0)
       return;
@@ -72,7 +72,7 @@ private:
       return dx * dx + dy * dy;
     };
 
-    autoware_msgs::Lane mpc_waypoints;
+    aslan_msgs::Lane mpc_waypoints;
     mpc_waypoints.header = final_waypoints.header;
     mpc_waypoints.increment = final_waypoints.increment;
     mpc_waypoints.lane_id = final_waypoints.lane_id;

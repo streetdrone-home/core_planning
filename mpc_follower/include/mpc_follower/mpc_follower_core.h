@@ -43,7 +43,7 @@
 #include <eigen3/Eigen/LU>
 
 #include <autoware_msgs/ControlCommandStamped.h>
-#include <autoware_msgs/Lane.h>
+#include <aslan_msgs/Lane.h>
 #include <autoware_msgs/VehicleStatus.h>
 
 #include "mpc_follower/mpc_utils.h"
@@ -87,7 +87,7 @@ private:
   Butterworth2dFilter lpf_steering_cmd_;                     //!< @brief lowpass filter for steering command
   Butterworth2dFilter lpf_lateral_error_;                    //!< @brief lowpass filter for lateral error to calculate derivatie
   Butterworth2dFilter lpf_yaw_error_;                        //!< @brief lowpass filter for heading error to calculate derivatie
-  autoware_msgs::Lane current_waypoints_;                    //!< @brief current waypoints to be followed
+  aslan_msgs::Lane current_waypoints_;                    //!< @brief current waypoints to be followed
   std::shared_ptr<VehicleModelInterface> vehicle_model_ptr_; //!< @brief vehicle model for MPC
   std::string vehicle_model_type_;                           //!< @brief vehicle model type for MPC
   std::shared_ptr<QPSolverInterface> qpsolver_ptr_;          //!< @brief qp solver for MPC
@@ -153,7 +153,7 @@ private:
   /**
    * @brief set current_waypoints_ with receved message
    */
-  void callbackRefPath(const autoware_msgs::Lane::ConstPtr &);
+  void callbackRefPath(const aslan_msgs::Lane::ConstPtr &);
 
   /**
    * @brief set vehicle_status_.pose with receved message 

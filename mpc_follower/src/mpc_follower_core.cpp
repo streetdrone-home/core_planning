@@ -534,7 +534,7 @@ bool MPCFollower::calculateMPC(double &vel_cmd, double &acc_cmd, double &steer_c
   return true;
 };
 
-void MPCFollower::callbackRefPath(const autoware_msgs::Lane::ConstPtr &msg)
+void MPCFollower::callbackRefPath(const aslan_msgs::Lane::ConstPtr &msg)
 {
   current_waypoints_ = *msg;
   DEBUG_INFO("[MPC] path callback: received path size = %lu", current_waypoints_.waypoints.size());

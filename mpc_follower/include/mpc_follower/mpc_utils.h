@@ -20,7 +20,7 @@
 #include <vector>
 #include <ros/ros.h>
 #include <eigen3/Eigen/Core>
-#include "autoware_msgs/Lane.h"
+#include "aslan_msgs/Lane.h"
 #include <tf2/utils.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <std_msgs/Float64MultiArray.h>
@@ -80,7 +80,7 @@ void calcTrajectoryCurvature(MPCTrajectory &traj, int curvature_smoothing_num);
  * @param [in] path input waypoints
  * @param [out] mpc_traj converted traj
  */
-void convertWaypointsToMPCTraj(const autoware_msgs::Lane &path, MPCTrajectory &mpc_traj);
+void convertWaypointsToMPCTraj(const aslan_msgs::Lane &path, MPCTrajectory &mpc_traj);
 
 /**
  * @brief convert waypoints to MPCTraj with interpolation
@@ -90,7 +90,7 @@ void convertWaypointsToMPCTraj(const autoware_msgs::Lane &path, MPCTrajectory &m
  * @param [in] d_ref_index constant distance of reference index
  * @param [out] ref_traj converted reference trajectory
  */
-void convertWaypointsToMPCTrajWithResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void convertWaypointsToMPCTrajWithResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                            const std::vector<double> &ref_index, const double &d_ref_index, MPCTrajectory &ref_traj);
 
 /**
@@ -100,7 +100,7 @@ void convertWaypointsToMPCTrajWithResample(const autoware_msgs::Lane &path, cons
  * @param [in] dl distance of interpolated path
  * @param [out] ref_traj converted reference trajectory
  */
-void convertWaypointsToMPCTrajWithDistanceResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void convertWaypointsToMPCTrajWithDistanceResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                                    const double &dl, MPCTrajectory &ref_traj);
 
 /**
@@ -110,7 +110,7 @@ void convertWaypointsToMPCTrajWithDistanceResample(const autoware_msgs::Lane &pa
  * @param [in] dt time span of interpolated path
  * @param [out] ref_traj converted reference trajectory
  */
-void convertWaypointsToMPCTrajWithTimeResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void convertWaypointsToMPCTrajWithTimeResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                                const double &dt, MPCTrajectory &ref_traj_);
 
 /**
@@ -118,7 +118,7 @@ void convertWaypointsToMPCTrajWithTimeResample(const autoware_msgs::Lane &path, 
  * @param [in] path object waypoints
  * @param [out] path_time calculated waypoints time vector
  */
-void calcPathRelativeTime(const autoware_msgs::Lane &path, std::vector<double> &path_time);
+void calcPathRelativeTime(const aslan_msgs::Lane &path, std::vector<double> &path_time);
 
 /**
  * @brief calculate nearest pose on MPCTrajectory

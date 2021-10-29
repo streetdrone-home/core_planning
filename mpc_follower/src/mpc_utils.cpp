@@ -193,7 +193,7 @@ void MPCUtils::calcTrajectoryCurvature(MPCTrajectory &traj, int curvature_smooth
   }
 }
 
-void MPCUtils::convertWaypointsToMPCTraj(const autoware_msgs::Lane &lane, MPCTrajectory &mpc_traj)
+void MPCUtils::convertWaypointsToMPCTraj(const aslan_msgs::Lane &lane, MPCTrajectory &mpc_traj)
 {
   mpc_traj.clear();
   const double k_tmp = 0.0;
@@ -209,7 +209,7 @@ void MPCUtils::convertWaypointsToMPCTraj(const autoware_msgs::Lane &lane, MPCTra
   }
 }
 
-void MPCUtils::convertWaypointsToMPCTrajWithDistanceResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void MPCUtils::convertWaypointsToMPCTrajWithDistanceResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                                              const double &dl, MPCTrajectory &ref_traj)
 {
   ref_traj.clear();
@@ -229,14 +229,14 @@ void MPCUtils::convertWaypointsToMPCTrajWithDistanceResample(const autoware_msgs
 }
 
 
-void MPCUtils::convertWaypointsToMPCTrajWithTimeResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void MPCUtils::convertWaypointsToMPCTrajWithTimeResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                                          const double &dt, MPCTrajectory &ref_traj)
 {
   ref_traj.clear();
   convertWaypointsToMPCTrajWithResample(path, path_time, path_time, dt, ref_traj);
 }
 
-void MPCUtils::convertWaypointsToMPCTrajWithResample(const autoware_msgs::Lane &path, const std::vector<double> &path_time,
+void MPCUtils::convertWaypointsToMPCTrajWithResample(const aslan_msgs::Lane &path, const std::vector<double> &path_time,
                                                      const std::vector<double> &ref_index, const double &d_ref_index, MPCTrajectory &ref_traj)
 {
   if (ref_index.size() == 0) {
@@ -285,7 +285,7 @@ void MPCUtils::convertWaypointsToMPCTrajWithResample(const autoware_msgs::Lane &
   }
 }
 
-void MPCUtils::calcPathRelativeTime(const autoware_msgs::Lane &path, std::vector<double> &path_time)
+void MPCUtils::calcPathRelativeTime(const aslan_msgs::Lane &path, std::vector<double> &path_time)
 {
   double t = 0.0;
   path_time.clear();
