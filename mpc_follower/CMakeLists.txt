@@ -4,8 +4,7 @@ project(mpc_follower)
 find_package(
   catkin REQUIRED COMPONENTS
   amathutils_lib
-  autoware_build_flags
-  autoware_health_checker
+  aslan_build_flags
   autoware_msgs
   geometry_msgs
   qpoases_vendor
